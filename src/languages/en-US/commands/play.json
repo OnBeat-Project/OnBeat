@@ -1,0 +1,20 @@
+{
+  "errors": {
+    "noVoice": "Join a voice channel!",
+    "findStation": "I cannot t find this station, it probably does not exist or it has been disabled.",
+    "notOnVoice": "Join <#{{VoiceChannel}}> to listen to that station!"
+  },
+  "success": {
+    "playing": {
+      "title": "Now I am playing {{station}}",
+      "description": "{{aboutStation}}",
+      "fields": [{
+        "name": "Music Playing",
+        "value": "{{music}}"
+      }, {
+        "name": "Music Artist",
+        "value": "{{artist}}"
+      }]
+    }
+  }
+}

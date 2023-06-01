@@ -1,4 +1,5 @@
 import { ApplyOptions } from '@sapphire/decorators';
+import { resolveKey } from '@sapphire/plugin-i18next';
 import { Command } from '@sapphire/framework';
 import { ApplicationCommandType, Message } from 'discord.js';
 
@@ -29,6 +30,7 @@ export class UserCommand extends Command {
 
 	// Chat Input (slash) command
 	public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
+    // console.log(interaction.client.application.commands)
 		return this.sendPing(interaction);
 	}
 
@@ -43,9 +45,7 @@ export class UserCommand extends Command {
 				? await interactionOrMessage.channel.send({ content: 'Ping?' })
 				: await interactionOrMessage.reply({ content: 'Ping?', fetchReply: true });
 
-		const content = `Pong! Bot Latency ${Math.round(this.container.client.ws.ping)}ms. API Latency ${
-			pingMessage.createdTimestamp - interactionOrMessage.createdTimestamp
-		}ms.`;
+		const content = await resolveKey(interactionOrMessage, 'commands/ping:success_with_args', { latency: pingMessage.createdTimestamp - interactionOrMessage.createdTimestamp }) as string
 
 		if (interactionOrMessage instanceof Message) {
 			return pingMessage.edit({ content });

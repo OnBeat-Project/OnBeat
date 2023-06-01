@@ -3,10 +3,13 @@
 	"compilerOptions": {
 		"rootDir": "src",
 		"outDir": "dist",
+    "resolveJsonModule": true,
 		"tsBuildInfoFile": "dist/.tsbuildinfo",
+    "noFallthroughCasesInSwitch": true,
     "paths": {
-      "#lib/*": ["./lib/*"]
+      "#lib/*": ["./lib/*"],
+      "#database/*": ["./lib/database/*"]
     }
 	},
-	"include": ["src"]
+	"include": ["src", "src/languages/**/*.json"]
 }
